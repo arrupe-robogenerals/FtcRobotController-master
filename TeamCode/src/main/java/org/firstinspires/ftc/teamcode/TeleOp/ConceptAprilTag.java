@@ -69,7 +69,7 @@ import java.util.List;
  */
 @TeleOp(name = "Concept: AprilTag", group = "Concept")
 
-//@Disabled
+@Disabled // commenting out this will not push it to driver hub
 public class ConceptAprilTag extends LinearOpMode {
 
     private static final boolean USE_WEBCAM = true;  // true for webcam, false for phone camera
