@@ -21,12 +21,15 @@ public void runOpMode()
   while (opModeIsActive())
   {
   float rightJoyInputX;
+  float leftJoyInputY;
   float rightJoyInputY;
   float rightTrigger;
   float leftTrigger;
   
   rightJoyInputY = -gamepad1.right_stick_y;
-  rightJoyInputX = -gamepad1.right_stick_x;
+//  rightJoyInputX = -gamepad1.right_stick_x;
+  leftJoyInputY = -gamepad1.left_stick_y;
+//  leftJoyInputX = -gamepad1.left_stick_x;
   rightTrigger = gamepad1.right_trigger;
   leftTrigger = gamepad1.left_trigger;
   
@@ -35,7 +38,7 @@ public void runOpMode()
   telemetry.addData("Y_Button",gamepad1.y);
   telemetry.addData("B_Button",gamepad1.b);
   telemetry.addData("RightJoyY",rightJoyInputY);
-  telemetry.addData("RightJoyX",rightJoyInputX);
+//  telemetry.addData("RightJoyX",rightJoyInputX);
   telemetry.addData("Front Left",robot.leftDriveFront.getCurrentPosition());
   telemetry.addData("Front Right",robot.rightDriveFront.getCurrentPosition());
   telemetry.addData("Back Left",robot.leftDriveBack.getCurrentPosition());
@@ -84,6 +87,10 @@ public void runOpMode()
    {
     robot.DriveForward(rightJoyInputY);
    }
+   else if(0 != leftJoyInputY){
+       robot.slinger_one.setPower(leftJoyInputY);
+       robot.slinger_two.setPower(leftJoyInputY);
+   }
    else
    {
     robot.DriveForward(0);
@@ -97,7 +104,8 @@ public void runOpMode()
     robot.slinger_one.setPower(0);
     robot.slinger_two.setPower(0);
    }
-   
+
+
    if(gamepad1.b){
     robot.intake.setPower(1);
    }
