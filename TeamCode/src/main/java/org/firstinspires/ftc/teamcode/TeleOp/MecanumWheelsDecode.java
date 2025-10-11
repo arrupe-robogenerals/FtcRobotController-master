@@ -68,8 +68,7 @@ public class MecanumWheelsDecode
   public DcMotor  slinger_two  = null;
   public DcMotor  intake = null;
   
-  
-  public Servo rotate = null;
+  public Servo servo = null;
   /* Local OpMode members. */
   HardwareMap hwMap  = null;
   private ElapsedTime period  = new ElapsedTime();
@@ -95,6 +94,8 @@ public class MecanumWheelsDecode
    intake = hwMap.get(DcMotor.class, "Intake");
    leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
    leftDriveBack.setDirection(DcMotor.Direction.REVERSE);
+
+   servo = hwMap.get(Servo.class, "mrservo");
   
   
    // Set all motors to zero power
