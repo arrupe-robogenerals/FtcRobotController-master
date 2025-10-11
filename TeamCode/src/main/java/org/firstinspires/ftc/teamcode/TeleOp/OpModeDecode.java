@@ -103,9 +103,9 @@ public void runOpMode()
 //          robot.slinger_two.setPower(0);
 //      }
 
-//      if (currentButton && !lastButtonState){
-//
-//      }
+      if (currentButton && !lastButton){
+        isUp = !isUp
+      }
       if (gamepad1.b) {
           robot.intake.setPower(1);
       } else {
