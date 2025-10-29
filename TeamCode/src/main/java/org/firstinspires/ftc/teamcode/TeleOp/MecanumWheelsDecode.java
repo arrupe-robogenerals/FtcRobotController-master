@@ -30,8 +30,8 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 //import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -54,110 +54,145 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * As the arm servo approaches 0, the arm position moves up (away from the floor).
  * As the servo approaches 0, the claw opens up (drops the game element).
  */
- 
+
  // global variable - updating negatives
- 
-public class MecanumWheelsDecode
-{
+
+public class MecanumWheelsDecode {
+
   /* Public OpMode members. */
   public DcMotor  leftDriveFront  = null;
   public DcMotor  rightDriveFront  = null;
   public DcMotor  leftDriveBack = null;
   public DcMotor  rightDriveBack  = null;
-  public DcMotor  slinger_one    = null;
-  public DcMotor  slinger_two  = null;
-  public DcMotor  intake = null;
-  
-  public Servo servo = null;
+
+  public ColorSensor colorSensor = null;
+ /*
+
+  public DcMotor launcher = null
+
+  public DcMotor waterWheel = null;
+
+  public Servo Gate = null;
+
+ */
+
+
+
   /* Local OpMode members. */
-  HardwareMap hwMap  = null;
-  private ElapsedTime period  = new ElapsedTime();
-  
+
+  HardwareMap hwMap = null;
+  private ElapsedTime period = new ElapsedTime();
+
+  //
+//    // Encoder constants
+    static final double COUNTS_PER_MOTOR_REV = 28;    // e.g. goBILDA 312RPM
+    static final double DRIVE_GEAR_REDUCTION = 1.0;      // No external gearing
+    static final double WHEEL_DIAMETER_INCHES = 4.0;     // 4-inch mecanum wheels
+    static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * Math.PI);
   /* Constructor */
-  public MecanumWheelsDecode ()
-  {
+  public MecanumWheelsDecode() {
   }
-  
+
   /* Initialize standard Hardware interfaces */
   public void init(HardwareMap ahwMap) {
-   // save reference to HW Map
-   hwMap = ahwMap;
-  
-   // Define and Initialize Motors
-   leftDriveFront  = hwMap.get(DcMotor.class, "FrontLeft");
-   rightDriveFront = hwMap.get(DcMotor.class, "FrontRight");
-   leftDriveBack  = hwMap.get(DcMotor.class, "BackLeft");
-   rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
-   slinger_one = hwMap.get(DcMotor.class, "Slinger1");
-   slinger_two = hwMap.get(DcMotor.class, "Slinger2");
-   // color_sensor = hwMap.get(DcMotor.class, "Color")
-   intake = hwMap.get(DcMotor.class, "Intake");
-   leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
-   leftDriveBack.setDirection(DcMotor.Direction.REVERSE);
+    // save reference to HW Map
+     hwMap = ahwMap;
+//
+       // Define and Initialize Motors
+        leftDriveFront  = hwMap.get(DcMotor.class, "FrontLeft");
+        rightDriveFront = hwMap.get(DcMotor.class, "FrontRight");
+        leftDriveBack  = hwMap.get(DcMotor.class, "BackLeft");
+        rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
 
-   servo = hwMap.get(Servo.class, "mrservo");
-  
-  
-   // Set all motors to zero power
-   leftDriveFront.setPower(0);
-   leftDriveBack.setPower(0);
-   rightDriveFront.setPower(0);
-   rightDriveBack.setPower(0);
-   
-   //armJointOne.setPower(0);
-  
-  
-   // Set all motors to run without encoders.
-   // May want to use RUN_USING_ENCODERS if encoders are installed.
-   leftDriveFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-   leftDriveBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-   rightDriveFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-   rightDriveBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-   
-   
-   //Define and initialize ALL installed servos.
-  
-  }
-  
-  void DriveForward(double x)
-  {
-   leftDriveBack.setPower(x);
-   rightDriveBack.setPower(x);
-   leftDriveFront.setPower(x);
-   rightDriveFront.setPower(x);
-  
-  }
-   void TurnRight(double x)
-  {
-   leftDriveBack.setPower(x);
-   rightDriveBack.setPower(-x);
-   leftDriveFront.setPower(x);
-   rightDriveFront.setPower(-x);
-  }
-  void TurnLeft(double x)
-  {
-   leftDriveBack.setPower(-x);
-   rightDriveBack.setPower(x);
-   leftDriveFront.setPower(-x);
-   rightDriveFront.setPower(x);
-  }
-  
-  //DRIFTING
-  void DriftRight(double x)
-  {
-      leftDriveBack.setPower(-x);
-      rightDriveBack.setPower(x);
-      leftDriveFront.setPower(x);
-      rightDriveFront.setPower(-x);
-  }
-  void DriftLeft(double x)
-  {
-      leftDriveBack.setPower(x);
-      rightDriveBack.setPower(-x);
-      leftDriveFront.setPower(-x);
-      rightDriveFront.setPower(x);
-      
-  }
-}
+        colorSensor = hwMap.get(ColorSensor.class, "Color");
 
+        /*
+
+
+        */
+
+
+        leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
+        leftDriveBack.setDirection(DcMotor.Direction.REVERSE);
+
+
+
+        // Set all motors to zero power
+        leftDriveFront.setPower(0);
+        leftDriveBack.setPower(0);
+        rightDriveFront.setPower(0);
+        rightDriveBack.setPower(0);
+
+        //armJointOne.setPower(0);
+
+
+        // Set all motors to run without encoders.
+        // May want to use RUN_USING_ENCODERS if encoders are installed.
+        leftDriveFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftDriveBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightDriveFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightDriveBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
+        //Define and initialize ALL installed servos.
+
+    }
+
+    void DriveForward(double x)
+    {
+        leftDriveBack.setPower(x);
+        rightDriveBack.setPower(x);
+        leftDriveFront.setPower(x);
+        rightDriveFront.setPower(x);
+
+    }
+    void TurnRight(double x)
+    {
+        leftDriveBack.setPower(x);
+        rightDriveBack.setPower(-x);
+        leftDriveFront.setPower(x);
+        rightDriveFront.setPower(-x);
+    }
+    void TurnLeft(double x)
+    {
+        leftDriveBack.setPower(-x);
+        rightDriveBack.setPower(x);
+        leftDriveFront.setPower(-x);
+        rightDriveFront.setPower(x);
+    }
+
+    //DRIFTING
+    void DriftRight(double x)
+    {
+        leftDriveBack.setPower(-x);
+        rightDriveBack.setPower(x);
+        leftDriveFront.setPower(x);
+        rightDriveFront.setPower(-x);
+    }
+    void DriftLeft(double x)
+    {
+        leftDriveBack.setPower(x);
+        rightDriveBack.setPower(-x);
+        leftDriveFront.setPower(-x);
+        rightDriveFront.setPower(x);
+
+    }
+
+
+  /*  static final double COUNTS_PER_REV = 537.7; // adjust to your motor spec
+
+    public double getRPM(DcMotor motor) {
+        int startPosition = motor.getCurrentPosition();
+        sleep(100); // wait 0.1 second
+        int newPosition = motor.getCurrentPosition();
+        int delta = newPosition - startPosition;
+
+        double revs = (double) delta / COUNTS_PER_REV;
+        double rpm = (revs / 0.1) * 60; // since we waited 0.1 sec → multiply by 60/0.1 = 600
+        return Math.abs(rpm);
+    }
+*/
+
+
+  }
 
