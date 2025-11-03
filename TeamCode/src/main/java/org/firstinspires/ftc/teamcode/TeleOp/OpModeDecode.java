@@ -11,7 +11,6 @@ public class OpModeDecode extends LinearOpMode {
 //Using
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
     ColorSensorHelper colorHelper;
-
     boolean lastButton = false;
     boolean isUp = false;
 
@@ -35,23 +34,33 @@ public class OpModeDecode extends LinearOpMode {
                 float leftTrigger;
 
                 rightJoyInputY = -gamepad1.right_stick_y;
-                rightJoyInputX = -gamepad1.right_stick_x;
                 leftJoyInputY = -gamepad1.left_stick_y;
-                // leftJoyInputX = -gamepad1.left_stick_x; not declared in the float
                 rightTrigger = gamepad1.right_trigger;
                 leftTrigger = gamepad1.left_trigger;
-
-
+                
                 telemetry.update();
-
-
+                
                 boolean rightBumper = gamepad1.right_bumper;
                 boolean leftBumper = gamepad1.left_bumper;
                 boolean dpad_down = gamepad1.dpad_up; // inverted code !!Keep!!
                 boolean dpad_up = gamepad1.dpad_down; // inverted code !!Keep!!
                 boolean dpad_right = gamepad1.dpad_left; // also inverted code !Keep!
                 boolean dpad_left = gamepad1.dpad_right; // also inverted code !keep!
+                
+                // rpm equation code
+                double ticksPerRev = robot.launcher.getMotorType().getTicksPerRev();
+                double velocityTPS = robot.launcher.getVelocity(); // ticks per second
+                double rpm = (velocityTPS * 60) / ticksPerRev;
 
+                telemetry.addData("Launcher RPM", rpm);
+                telemetry.update();
+
+                if(colorHelper.isPurple()){
+                    telemetry.addData("Detected Color: ", "Puprle");
+                }
+                else{
+                    telemetry.addData("Detected Color: ", "Green");
+                }
 
                 //moving robot
                 if (rightBumper) // drifting

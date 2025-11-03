@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 //import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -66,9 +67,10 @@ public class MecanumWheelsDecode {
   public DcMotor  rightDriveBack  = null;
 
   public ColorSensor colorSensor = null;
+  public DcMotorEx launcher = null;
  /*
 
-  public DcMotor launcher = null
+  public DcMotor launcher = null;
 
   public DcMotor waterWheel = null;
 
@@ -104,17 +106,17 @@ public class MecanumWheelsDecode {
         leftDriveBack  = hwMap.get(DcMotor.class, "BackLeft");
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
 
-        colorSensor = hwMap.get(ColorSensor.class, "Color");
+        launcher = hwMap.get(DcMotorEx.class, "Launcher");
+
+//        colorSensor = hwMap.get(ColorSensor.class, "Color");
 
         /*
 
 
         */
 
-
         leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
         leftDriveBack.setDirection(DcMotor.Direction.REVERSE);
-
 
 
         // Set all motors to zero power
@@ -178,21 +180,21 @@ public class MecanumWheelsDecode {
 
     }
 
+static final double COUNTS_PER_REV = 537.7; // adjust to your motor spec
 
-  /*  static final double COUNTS_PER_REV = 537.7; // adjust to your motor spec
+public double getRPM(DcMotor motor) {
+    int startPosition = motor.getCurrentPosition();
+    sleep(100); // wait 0.1 second
+    int newPosition = motor.getCurrentPosition();
+    int delta = newPosition - startPosition;
 
-    public double getRPM(DcMotor motor) {
-        int startPosition = motor.getCurrentPosition();
-        sleep(100); // wait 0.1 second
-        int newPosition = motor.getCurrentPosition();
-        int delta = newPosition - startPosition;
+    double revs = (double) delta / COUNTS_PER_REV;
+    double rpm = (revs / 0.1) * 60; // since we waited 0.1 sec → multiply by 60/0.1 = 600
+    return Math.abs(rpm);
+}
 
-        double revs = (double) delta / COUNTS_PER_REV;
-        double rpm = (revs / 0.1) * 60; // since we waited 0.1 sec → multiply by 60/0.1 = 600
-        return Math.abs(rpm);
+    private void sleep(int i) {
     }
-*/
 
-
-  }
+}
 
