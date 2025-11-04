@@ -66,8 +66,8 @@ public class MecanumWheelsDecode {
   public DcMotor  leftDriveBack = null;
   public DcMotor  rightDriveBack  = null;
 
-  public ColorSensor colorSensor = null;
-  public DcMotorEx launcher = null;
+//  public ColorSensor colorSensor = null;
+  public DcMotor launcher = null;
  /*
 
   public DcMotor launcher = null;
@@ -106,7 +106,7 @@ public class MecanumWheelsDecode {
         leftDriveBack  = hwMap.get(DcMotor.class, "BackLeft");
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
 
-        launcher = hwMap.get(DcMotorEx.class, "Launcher");
+        launcher = hwMap.get(DcMotor.class, "Launcher");
 
 //        colorSensor = hwMap.get(ColorSensor.class, "Color");
 
