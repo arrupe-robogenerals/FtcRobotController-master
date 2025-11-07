@@ -30,9 +30,7 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 //import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -60,73 +58,49 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class MecanumWheelsDecode {
 
-  /* Public OpMode members. */
-  public DcMotor  leftDriveFront  = null;
-  public DcMotor  rightDriveFront  = null;
-  public DcMotor  leftDriveBack = null;
-  public DcMotor  rightDriveBack  = null;
-
-//  public ColorSensor colorSensor = null;
-  public DcMotor launcher = null;
+    /* Public OpMode members. */
+    public DcMotor leftDriveFront = null;
+    public DcMotor rightDriveFront = null;
+    public DcMotor leftDriveBack = null;
+    public DcMotor rightDriveBack = null;
+    public DcMotor launcher = null;
  /*
-
-  public DcMotor launcher = null;
-
   public DcMotor waterWheel = null;
-
+  public ColorSensor colorSensor = null;
   public Servo Gate = null;
-
  */
 
+    /* Local OpMode members. */
 
+    HardwareMap hwMap = null;
+    private ElapsedTime period = new ElapsedTime();
 
-  /* Local OpMode members. */
+    public MecanumWheelsDecode() {
+    }
 
-  HardwareMap hwMap = null;
-  private ElapsedTime period = new ElapsedTime();
-
-  //
-//    // Encoder constants
-    static final double COUNTS_PER_MOTOR_REV = 28;    // e.g. goBILDA 312RPM
-    static final double DRIVE_GEAR_REDUCTION = 1.0;      // No external gearing
-    static final double WHEEL_DIAMETER_INCHES = 4.0;     // 4-inch mecanum wheels
-    static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * Math.PI);
-  /* Constructor */
-  public MecanumWheelsDecode() {
-  }
-
-  /* Initialize standard Hardware interfaces */
-  public void init(HardwareMap ahwMap) {
-    // save reference to HW Map
-     hwMap = ahwMap;
+    /* Initialize standard Hardware interfaces */
+    public void init(HardwareMap ahwMap) {
+        // save reference to HW Map
+        hwMap = ahwMap;
 //
-       // Define and Initialize Motors
-        leftDriveFront  = hwMap.get(DcMotor.class, "FrontLeft");
+        // Define and Initialize Motors
+        leftDriveFront = hwMap.get(DcMotor.class, "FrontLeft");
         rightDriveFront = hwMap.get(DcMotor.class, "FrontRight");
-        leftDriveBack  = hwMap.get(DcMotor.class, "BackLeft");
+        leftDriveBack = hwMap.get(DcMotor.class, "BackLeft");
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
 
         launcher = hwMap.get(DcMotor.class, "Launcher");
-
 //        colorSensor = hwMap.get(ColorSensor.class, "Color");
-
-        /*
-
-
-        */
 
         leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
         leftDriveBack.setDirection(DcMotor.Direction.REVERSE);
-
 
         // Set all motors to zero power
         leftDriveFront.setPower(0);
         leftDriveBack.setPower(0);
         rightDriveFront.setPower(0);
         rightDriveBack.setPower(0);
-
-        //armJointOne.setPower(0);
-
+        launcher.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
@@ -134,29 +108,29 @@ public class MecanumWheelsDecode {
         leftDriveBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightDriveFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightDriveBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        launcher.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         //Define and initialize ALL installed servos.
 
     }
-
-    void DriveForward(double x)
-    {
+    void LauncherPower(double x){
+        launcher.setPower(x);
+    }
+    void DriveForward(double x) {
         leftDriveBack.setPower(x);
         rightDriveBack.setPower(x);
         leftDriveFront.setPower(x);
         rightDriveFront.setPower(x);
-
     }
-    void TurnRight(double x)
-    {
+    void TurnRight(double x) {
         leftDriveBack.setPower(x);
         rightDriveBack.setPower(-x);
         leftDriveFront.setPower(x);
         rightDriveFront.setPower(-x);
     }
-    void TurnLeft(double x)
-    {
+
+    void TurnLeft(double x) {
         leftDriveBack.setPower(-x);
         rightDriveBack.setPower(x);
         leftDriveFront.setPower(-x);
@@ -164,15 +138,14 @@ public class MecanumWheelsDecode {
     }
 
     //DRIFTING
-    void DriftRight(double x)
-    {
+    void DriftRight(double x) {
         leftDriveBack.setPower(-x);
         rightDriveBack.setPower(x);
         leftDriveFront.setPower(x);
         rightDriveFront.setPower(-x);
     }
-    void DriftLeft(double x)
-    {
+
+    void DriftLeft(double x) {
         leftDriveBack.setPower(x);
         rightDriveBack.setPower(-x);
         leftDriveFront.setPower(-x);
@@ -180,8 +153,11 @@ public class MecanumWheelsDecode {
 
     }
 
-static final double COUNTS_PER_REV = 537.7; // adjust to your motor spec
+}
 
+//static final double COUNTS_PER_REV = 537.7; // adjust to your motor specific
+
+    /*
 public double getRPM(DcMotor motor) {
     int startPosition = motor.getCurrentPosition();
     sleep(100); // wait 0.1 second
@@ -196,5 +172,5 @@ public double getRPM(DcMotor motor) {
     private void sleep(int i) {
     }
 
-}
+     */
 

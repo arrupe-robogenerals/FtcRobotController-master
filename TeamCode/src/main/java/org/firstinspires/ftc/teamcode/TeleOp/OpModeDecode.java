@@ -2,24 +2,29 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
+// import com.qualcomm.robotcore.ColorSensor.colorSensor
 @TeleOp
 
 public class OpModeDecode extends LinearOpMode {
 //Using
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 //    ColorSensorHelper colorHelper;
-    boolean lastButton = false;
-    boolean isUp = false;
-    private HardwareMap HardwareMap;
+//    boolean lastButton = false;
+//    boolean isUp = false;
 
     @Override
 
     public void runOpMode() {
-
         robot.init(hardwareMap);
+
+        final double COUNTS_PER_REV = 537.7;
+
+        int lastPosition = robot.launcher.getCurrentPosition();
+        ElapsedTime timer = new ElapsedTime();
+
 
 //         ColorSensor colorSensor = hardwareMap.get(ColorSensor.class, "Color");
 //        colorHelper = new ColorSensorHelper(colorSensor);
@@ -27,11 +32,12 @@ public class OpModeDecode extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-                boolean currentButton = gamepad1.x;
                 float rightJoyInputY;
                 float rightTrigger;
                 float leftTrigger;
+                float leftJoyInputY;
 
+                leftJoyInputY = gamepad1.left_stick_y;
                 rightJoyInputY = -gamepad1.right_stick_y;
                 rightTrigger = gamepad1.right_trigger;
                 leftTrigger = gamepad1.left_trigger;
@@ -40,26 +46,26 @@ public class OpModeDecode extends LinearOpMode {
                 
                 boolean rightBumper = gamepad1.right_bumper;
                 boolean leftBumper = gamepad1.left_bumper;
+
+             /*
                 boolean dpad_down = gamepad1.dpad_up; // inverted code !!Keep!!
                 boolean dpad_up = gamepad1.dpad_down; // inverted code !!Keep!!
                 boolean dpad_right = gamepad1.dpad_left; // also inverted code !Keep!
                 boolean dpad_left = gamepad1.dpad_right; // also inverted code !keep!
-                
-                // rpm equation code
-                double ticksPerRev = robot.launcher.getMotorType().getTicksPerRev();
-                double velocityTPS = robot.launcher.getPower(); // ticks per second
-                double rpm = (velocityTPS * 60) / ticksPerRev;
+             */
+
+            // rpm equation code
+                int currentPosition = robot.launcher.getCurrentPosition();
+                double deltaTime = timer.seconds();
+                double deltaCounts = currentPosition - lastPosition;
+
+                double rpm = (deltaCounts / COUNTS_PER_REV) / deltaTime * 60.0;
 
                 telemetry.addData("Launcher RPM", rpm);
                 telemetry.update();
-            /*
-                if(colorHelper.isPurple()){
-                    telemetry.addData("Detected Color: ", "Puprle");
-                }
-                else{
-                    telemetry.addData("Detected Color: ", "Green");
-                }
-            */
+                lastPosition = currentPosition;
+                timer.reset();
+
                 //moving robot
                 if (rightBumper) // drifting
                 {
@@ -79,13 +85,18 @@ public class OpModeDecode extends LinearOpMode {
                 {
                     robot.DriveForward(rightJoyInputY);
                 }
-                else{
+//                else{
+//                    robot.DriveForward(0);
+//                }
+                else if (0 != leftJoyInputY){
+                    robot.LauncherPower(leftJoyInputY);
+                }
+                else {
+                    robot.LauncherPower(0);
                     robot.DriveForward(0);
                 }
 
-                if (gamepad1.a){
-                    robot.launcher.setPower(1);
-                }
+
 
                 }//end while loop
         } //end public void
@@ -112,4 +123,13 @@ public class OpModeDecode extends LinearOpMode {
     telemetry.addData("Left Bumper", gamepad1.left_bumper);
     telemetry.addData("Right Trigger", rightTrigger);
     telemetry.addData("Left Trigger", leftTrigger);
+*/
+
+ /*
+    if(colorHelper.isPurple()){
+        telemetry.addData("Detected Color: ", "Puprle");
+    }
+    else{
+        telemetry.addData("Detected Color: ", "Green");
+    }
 */
