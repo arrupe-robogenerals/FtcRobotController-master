@@ -65,7 +65,7 @@ public class MecanumWheelsDecode {
     public DcMotor leftDriveBack = null;
     public DcMotor rightDriveBack = null;
     public DcMotor launcher = null;
-    public Servo Gate = null;
+    public Servo Gate = null; // added in servo
  /*
   public DcMotor waterWheel = null;
   public ColorSensor colorSensor = null;
