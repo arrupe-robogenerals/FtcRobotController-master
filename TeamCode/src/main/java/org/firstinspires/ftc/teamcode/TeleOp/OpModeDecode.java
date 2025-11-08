@@ -32,71 +32,76 @@ public class OpModeDecode extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-                float rightJoyInputY;
-                float rightTrigger;
-                float leftTrigger;
-                float leftJoyInputY;
+                    float rightJoyInputY;
+                    float rightTrigger;
+                    float leftTrigger;
+                    float leftJoyInputY;
 
-                leftJoyInputY = gamepad1.left_stick_y;
-                rightJoyInputY = -gamepad1.right_stick_y;
-                rightTrigger = gamepad1.right_trigger;
-                leftTrigger = gamepad1.left_trigger;
-                
-                telemetry.update();
-                
-                boolean rightBumper = gamepad1.right_bumper;
-                boolean leftBumper = gamepad1.left_bumper;
+                    leftJoyInputY = gamepad1.left_stick_y;
+                    rightJoyInputY = -gamepad1.right_stick_y;
+                    rightTrigger = gamepad1.right_trigger;
+                    leftTrigger = gamepad1.left_trigger;
 
-             /*
-                boolean dpad_down = gamepad1.dpad_up; // inverted code !!Keep!!
-                boolean dpad_up = gamepad1.dpad_down; // inverted code !!Keep!!
-                boolean dpad_right = gamepad1.dpad_left; // also inverted code !Keep!
-                boolean dpad_left = gamepad1.dpad_right; // also inverted code !keep!
-             */
+                    telemetry.update();
 
-            // rpm equation code
-                int currentPosition = robot.launcher.getCurrentPosition();
-                double deltaTime = timer.seconds();
-                double deltaCounts = currentPosition - lastPosition;
+                    boolean rightBumper = gamepad1.right_bumper;
+                    boolean leftBumper = gamepad1.left_bumper;
 
-                double rpm = (deltaCounts / COUNTS_PER_REV) / deltaTime * 60.0;
+                 /*
+                    boolean dpad_down = gamepad1.dpad_up; // inverted code !!Keep!!
+                    boolean dpad_up = gamepad1.dpad_down; // inverted code !!Keep!!
+                    boolean dpad_right = gamepad1.dpad_left; // also inverted code !Keep!
+                    boolean dpad_left = gamepad1.dpad_right; // also inverted code !keep!
+                 */
 
-                telemetry.addData("Launcher RPM", rpm);
-                telemetry.update();
-                lastPosition = currentPosition;
-                timer.reset();
+                // rpm equation code
+                    int currentPosition = robot.launcher.getCurrentPosition();
+                    double deltaTime = timer.seconds();
+                    double deltaCounts = currentPosition - lastPosition;
 
-                //moving robot
-                if (rightBumper) // drifting
-                {
-                    robot.DriftRight(1);
-                } else if (leftBumper) // drifting
-                {
-                    robot.DriftLeft(1);
-                } else if (rightTrigger > 0) // turning
-                {
-                    robot.TurnRight(1);
-                } else if (leftTrigger > 0)// turning
-                {
-                    robot.TurnLeft(1);
-                }
+                    double rpm = (deltaCounts / COUNTS_PER_REV) / deltaTime * 60.0;
 
-                else if (0 != rightJoyInputY) // driving
-                {
-                    robot.DriveForward(rightJoyInputY);
-                }
-//                else{
-//                    robot.DriveForward(0);
-//                }
-                else if (0 != leftJoyInputY){
-                    robot.LauncherPower(leftJoyInputY);
-                }
-                else {
-                    robot.LauncherPower(0);
-                    robot.DriveForward(0);
-                }
+                    telemetry.addData("Launcher RPM", rpm);
+                    telemetry.update();
+                    lastPosition = currentPosition;
+                    timer.reset();
 
+                    //moving robot
+                    if (rightBumper) // drifting
+                    {
+                        robot.DriftRight(1);
+                    } else if (leftBumper) // drifting
+                    {
+                        robot.DriftLeft(1);
+                    } else if (rightTrigger > 0) // turning
+                    {
+                        robot.TurnRight(1);
+                    } else if (leftTrigger > 0)// turning
+                    {
+                        robot.TurnLeft(1);
+                    }
 
+                    else if (0 != rightJoyInputY) // driving
+                    {
+                        robot.DriveForward(rightJoyInputY);
+                    }
+    //                else{
+    //                    robot.DriveForward(0);
+    //                }
+                    else if (0 != leftJoyInputY){
+                        robot.LauncherPower(leftJoyInputY);
+                    }
+                    else {
+                        robot.LauncherPower(0);
+                        robot.DriveForward(0);
+                    }
+
+                    if (gamepad1.a){
+                        robot.Gate.setPosition(1);
+                    }
+                    else {
+                        robot.Gate.setPosition(0);
+                    }
 
                 }//end while loop
         } //end public void

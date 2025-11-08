@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 //import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 
@@ -64,6 +65,7 @@ public class MecanumWheelsDecode {
     public DcMotor leftDriveBack = null;
     public DcMotor rightDriveBack = null;
     public DcMotor launcher = null;
+    public Servo Gate = null;
  /*
   public DcMotor waterWheel = null;
   public ColorSensor colorSensor = null;
@@ -90,6 +92,7 @@ public class MecanumWheelsDecode {
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
 
         launcher = hwMap.get(DcMotor.class, "Launcher");
+        Gate = hwMap.get(Servo.class, "Gate Servo");
 //        colorSensor = hwMap.get(ColorSensor.class, "Color");
 
         leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
