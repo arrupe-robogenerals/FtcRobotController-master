@@ -17,12 +17,20 @@ public class simpleAuto extends LinearOpMode {
 
         waitForStart();
 
-        robot.DriveForward(1);
-        sleep(500);
-        robot.DriveForward(0);
-        sleep(500);
+//        robot.DriveForward(1);
+//        sleep(500);
+//        robot.DriveForward(0);
+//        sleep(500);
 
         robot.launcher.setPower(1);
+        sleep(100);
+        robot.Gate.setPosition(1);
+        robot.launcher.setPower(1);
+        sleep(100);
+        robot.launcher.setPower(0);
+
+
+//        robot.launcher.setPower(1);
 
 
     }
