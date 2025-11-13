@@ -39,4 +39,7 @@ public class simpleAuto extends LinearOpMode {
 
 /*
 
+change the code to move back and then launch with servo opening three times
+code three things
+
  */
