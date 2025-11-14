@@ -17,21 +17,29 @@ public class simpleAuto extends LinearOpMode {
 
         waitForStart();
 
-//        robot.DriveForward(1);
-//        sleep(500);
-//        robot.DriveForward(0);
-//        sleep(500);
+        robot.DriveForward(1);
+        sleep(500);
+        robot.DriveForward(0);
+//        sleep(500);ftrvgfvv
 
-        robot.launcher.setPower(1);
-        sleep(100);
+//        robot.TurnRight(1);
+//        sleep(500);
+//        robot.TurnRight(0);
+
         robot.Gate.setPosition(1);
-        robot.launcher.setPower(1);
-        sleep(100);
+        sleep(1000);
+        robot.Gate.setPosition(0);
+
+        robot.launcher.setPower(-1);
+        sleep(2000);
         robot.launcher.setPower(0);
-
-
-//        robot.launcher.setPower(1);
-
 
     }
 }
+
+/*
+
+change the code to move back and then launch with servo opening three times
+code three things
+
+ */
