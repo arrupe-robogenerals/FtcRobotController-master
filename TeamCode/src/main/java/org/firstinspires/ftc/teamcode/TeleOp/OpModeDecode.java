@@ -36,11 +36,13 @@ public class OpModeDecode extends LinearOpMode {
                     float rightTrigger;
                     float leftTrigger;
                     float leftJoyInputY;
+                    float leftJoyInputYT;
 
                     leftJoyInputY = gamepad1.left_stick_y;
                     rightJoyInputY = -gamepad1.right_stick_y;
                     rightTrigger = gamepad1.right_trigger;
                     leftTrigger = gamepad1.left_trigger;
+                    leftJoyInputYT = gamepad2.left_stick_y;
 
                     telemetry.update();
 
@@ -92,16 +94,20 @@ public class OpModeDecode extends LinearOpMode {
                         robot.LauncherPower(leftJoyInputY);
                     }
                     else if (gamepad2.b)
-                        robot.LauncherPower(-1);
+                        robot.LauncherPower(-0.95);
                     else if (gamepad2.y)
-                        robot.LauncherPower(-0.85);
+                        robot.LauncherPower(-0.9);
                     else if (gamepad2.x)
-                        robot.LauncherPower(-0.75);
+                        robot.LauncherPower(-0.8);
                     else if (gamepad2.a)
-                        robot.LauncherPower(-0.65);
+                        robot.LauncherPower(-0.7); // too slpw - doesnt launch high enough
+                    else if (0 != leftJoyInputYT) {
+                        robot.Gate.setPosition(1);
+                    }
                     else {
                         robot.LauncherPower(0);
                         robot.DriveForward(0);
+                        robot.Gate.setPosition(0);
                     }
 
                     if (gamepad1.a){
