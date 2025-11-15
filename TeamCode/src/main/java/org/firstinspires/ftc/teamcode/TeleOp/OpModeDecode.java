@@ -100,7 +100,7 @@ public class OpModeDecode extends LinearOpMode {
                     else if (gamepad2.x)
                         robot.LauncherPower(-0.8);
                     else if (gamepad2.a)
-                        robot.LauncherPower(-0.7); // too slpw - doesnt launch high enough
+                        robot.LauncherPower(-0.7);
                     else if (0 != leftJoyInputYT) {
                         robot.Gate.setPosition(1);
                     }
