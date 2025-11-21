@@ -72,11 +72,9 @@ public class OpModeDecode extends LinearOpMode {
                     if (rightBumper) // drifting
                     {
                         robot.DriftRight(0.6);
-//                        rightBumper = false;
                     } else if (leftBumper) // drifting
                     {
                         robot.DriftLeft(0.6);
-//                        leftBumper = false;
                     } else if (rightTrigger > 0) // turning
                     {
                         robot.TurnRight(0.5);
@@ -87,14 +85,10 @@ public class OpModeDecode extends LinearOpMode {
                     else if (0 != leftJoyInputY) // driving
                     {
                         robot.DriveForward(leftJoyInputY);
-//                        rightJoyInputY = 0;
                     }
                     else{
                         robot.DriveForward(0);
                     }
-//                    else if (0 != leftJoyInputY){
-//                        robot.LauncherPower(leftJoyInputY);
-//                    }
 
 
                     if (gamepad2.b)
