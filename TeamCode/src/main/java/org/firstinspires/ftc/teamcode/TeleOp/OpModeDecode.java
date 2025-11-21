@@ -38,7 +38,7 @@ public class OpModeDecode extends LinearOpMode {
                     float leftJoyInputY;
                     float leftJoyInputYT;
 
-                    leftJoyInputY = gamepad1.left_stick_y;
+                    leftJoyInputY = -gamepad1.left_stick_y;
                     rightJoyInputY = -gamepad1.right_stick_y;
                     rightTrigger = gamepad1.right_trigger;
                     leftTrigger = gamepad1.left_trigger;
@@ -71,29 +71,27 @@ public class OpModeDecode extends LinearOpMode {
                     //moving robot
                     if (rightBumper) // drifting
                     {
-                        robot.DriftRight(1);
+                        robot.DriftRight(0.6);
                     } else if (leftBumper) // drifting
                     {
-                        robot.DriftLeft(1);
+                        robot.DriftLeft(0.6);
                     } else if (rightTrigger > 0) // turning
                     {
-                        robot.TurnRight(1);
+                        robot.TurnRight(0.5);
                     } else if (leftTrigger > 0)// turning
                     {
-                        robot.TurnLeft(1);
+                        robot.TurnLeft(0.5);
+                    }
+                    else if (0 != leftJoyInputY) // driving
+                    {
+                        robot.DriveForward(leftJoyInputY);
+                    }
+                    else{
+                        robot.DriveForward(0);
                     }
 
-                    else if (0 != rightJoyInputY) // driving
-                    {
-                        robot.DriveForward(rightJoyInputY);
-                    }
-    //                else{
-    //                    robot.DriveForward(0);
-    //                }
-                    else if (0 != leftJoyInputY){
-                        robot.LauncherPower(leftJoyInputY);
-                    }
-                    else if (gamepad2.b)
+
+                    if (gamepad2.b)
                         robot.LauncherPower(-0.95);
                     else if (gamepad2.y)
                         robot.LauncherPower(-0.9);
@@ -101,13 +99,8 @@ public class OpModeDecode extends LinearOpMode {
                         robot.LauncherPower(-0.8);
                     else if (gamepad2.a)
                         robot.LauncherPower(-0.7);
-                    else if (0 != leftJoyInputYT) {
-                        robot.Gate.setPosition(1);
-                    }
-                    else {
+                    else{
                         robot.LauncherPower(0);
-                        robot.DriveForward(0);
-                        robot.Gate.setPosition(0);
                     }
 
                     if (gamepad1.a){
@@ -152,3 +145,13 @@ public class OpModeDecode extends LinearOpMode {
         telemetry.addData("Detected Color: ", "Green");
     }
 */
+
+/*
+else if (0 != leftJoyInputYT) {
+robot.Gate.setPosition(1);
+}
+else {
+robot.LauncherPower(0);
+robot.DriveForward(0);
+robot.Gate.setPosition(0);
+                    }*/
