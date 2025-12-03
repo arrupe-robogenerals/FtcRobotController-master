@@ -89,6 +89,15 @@ public class OpModeDecode extends LinearOpMode {
                     else{
                         robot.DriveForward(0);
                     }
+                    if (gamepad2.dpad_right){
+                        robot.intake.setPower(-0.85);
+                    }
+                    else if (gamepad2.dpad_left){
+                        robot.intake.setPower(0.85);
+                    }
+                    else{
+                        robot.intake.setPower(0.0);
+                    }
 
 
                     if (gamepad2.b)
@@ -103,11 +112,11 @@ public class OpModeDecode extends LinearOpMode {
                         robot.LauncherPower(0);
                     }
 
-                    if (gamepad1.a){
-                        robot.Gate.setPosition(1);
+                    if (gamepad2.dpad_down){
+                        robot.Gate.setPosition(0.5);
                     }
                     else {
-                        robot.Gate.setPosition(0);
+                        robot.Gate.setPosition(0.2);
                     }
 
                 }//end while loop

@@ -23,13 +23,13 @@ public class simpleRAuto extends LinearOpMode {
 
         sleep(700);
 
-        robot.launcher.setPower(-0.67);
+        robot.launcher.setPower(-0.62);
 
         robot.DriveForward(0);
 
-        robot.Gate.setPosition(1);
+        robot.Gate.setPosition(0.5);
 
-        sleep(20000);
+        sleep(16000);
 
         robot.DriftRight(0.30);
         sleep(1000);
