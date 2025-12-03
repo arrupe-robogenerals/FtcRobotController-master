@@ -65,7 +65,9 @@ public class MecanumWheelsDecode {
     public DcMotor leftDriveBack = null;
     public DcMotor rightDriveBack = null;
     public DcMotor launcher = null;
+    public DcMotor intake = null;
     public Servo Gate = null; // added in servo
+
  /*
   public DcMotor waterWheel = null;
   public ColorSensor colorSensor = null;
@@ -90,6 +92,8 @@ public class MecanumWheelsDecode {
         rightDriveFront = hwMap.get(DcMotor.class, "FrontRight");
         leftDriveBack = hwMap.get(DcMotor.class, "BackLeft");
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
+        intake = hwMap.get(DcMotor.class, "Intake");
+
 
         launcher = hwMap.get(DcMotor.class, "Launcher");
         Gate = hwMap.get(Servo.class, "Gate Servo");
@@ -104,6 +108,7 @@ public class MecanumWheelsDecode {
         rightDriveFront.setPower(0);
         rightDriveBack.setPower(0);
         launcher.setPower(0);
+        intake.setPower(0);
 
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
