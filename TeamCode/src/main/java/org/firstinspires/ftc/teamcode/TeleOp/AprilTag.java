@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 import android.appwidget.AppWidgetProviderInfo;
@@ -14,7 +15,8 @@ import org.opencv.core.Mat;
 import java.util.ArrayList;
 
 
-public class AprilTagWebcam {
+
+public class AprilTag {
 
     private AprilTagProcessor aprilTagProcessor;
     private VisionPortal visionPortal;
@@ -52,7 +54,7 @@ public class AprilTagWebcam {
             }
             return null;
         }
-        public void stop() {
+        public void stop {
             if (visionPortal != null){
                 visionPortal.close();
             }
@@ -62,3 +64,6 @@ public class AprilTagWebcam {
 
 
     }
+
+
+ */

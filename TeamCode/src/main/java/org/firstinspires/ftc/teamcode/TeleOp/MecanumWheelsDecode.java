@@ -30,10 +30,13 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 //import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.hardware.sparkfun.SparkFunOTOS;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorSparkFunOTOS;
 
 
 /**
@@ -67,6 +70,7 @@ public class MecanumWheelsDecode {
     public DcMotor launcher = null;
     public DcMotor intake = null;
     public Servo Gate = null; // added in servo
+    public SparkFunOTOS myOtos = null;
 
  /*
   public DcMotor waterWheel = null;
@@ -93,6 +97,8 @@ public class MecanumWheelsDecode {
         leftDriveBack = hwMap.get(DcMotor.class, "BackLeft");
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
         intake = hwMap.get(DcMotor.class, "Intake");
+        myOtos = hwMap.get(SparkFunOTOS.class, "myOtos");
+
 
 
         launcher = hwMap.get(DcMotor.class, "Launcher");

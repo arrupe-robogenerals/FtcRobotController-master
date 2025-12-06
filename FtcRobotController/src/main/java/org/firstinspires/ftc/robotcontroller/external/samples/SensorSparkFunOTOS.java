@@ -153,4 +153,5 @@ public class SensorSparkFunOTOS extends LinearOpMode {
         telemetry.addLine(String.format("OTOS Firmware Version: v%d.%d", fwVersion.major, fwVersion.minor));
         telemetry.update();
     }
+
 }
