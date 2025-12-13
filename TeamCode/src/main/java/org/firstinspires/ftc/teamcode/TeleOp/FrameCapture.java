@@ -35,7 +35,6 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import android.util.Size;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -59,9 +58,9 @@ import java.util.Locale;
  * In OnBot Java, use "Add File" to add this OpMode from the list of Samples.
  */
 
-@TeleOp(name = "Utility: Camera Frame Capture", group = "Utility")
+@TeleOp(name = "Frame Capture", group = "Utility")
 //@Disabled
-public class UtilityCameraFrameCapture extends LinearOpMode
+public class FrameCapture extends LinearOpMode
 {
     /*
      * EDIT THESE PARAMETERS AS NEEDED

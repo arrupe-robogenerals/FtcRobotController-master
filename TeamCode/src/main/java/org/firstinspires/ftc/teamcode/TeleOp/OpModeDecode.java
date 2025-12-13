@@ -57,15 +57,22 @@ public class OpModeDecode extends LinearOpMode {
                  */
 
                 // rpm equation code
+                   /*
                     int currentPosition = robot.launcher.getCurrentPosition();
                     double deltaTime = timer.seconds();
                     double deltaCounts = currentPosition - lastPosition;
 
+
                     double rpm = (deltaCounts / COUNTS_PER_REV) / deltaTime * 60.0;
 
                     telemetry.addData("Launcher RPM", rpm);
+                    */
+                    telemetry.addData("A_Button", gamepad1.a);
+                    telemetry.addData("X_Button", gamepad1.x);
+                    telemetry.addData("Y_Button", gamepad1.y);
+                    telemetry.addData("B_Button", gamepad1.b);
                     telemetry.update();
-                    lastPosition = currentPosition;
+//                    lastPosition = currentPosition;
                     timer.reset();
 
                     //moving robot
@@ -89,10 +96,8 @@ public class OpModeDecode extends LinearOpMode {
                     else{
                         robot.DriveForward(0);
                     }
+
                     if (gamepad2.dpad_right){
-                        robot.intake.setPower(-0.85);
-                    }
-                    else if (gamepad2.dpad_left){
                         robot.intake.setPower(0.85);
                     }
                     else{
@@ -111,14 +116,26 @@ public class OpModeDecode extends LinearOpMode {
                     else{
                         robot.LauncherPower(0);
                     }
-
+                /*
                     if (gamepad2.dpad_down){
                         robot.Gate.setPosition(0.5);
                     }
                     else {
                         robot.Gate.setPosition(0.2);
                     }
+                */
+            // lock in position for gate
+                if (gamepad2.dpad_down){
+                    robot.Gate.setPosition(0.1);
+                }
+                else if (gamepad2.dpad_up){
+                    robot.Gate.setPosition(0.8);
+                }
+                else {
+                    robot.Gate.setPosition(0.5);
+                }
 
+//                    if (gamepad2.dpad_left)
                 }//end while loop
         } //end public void
 } //end public class
