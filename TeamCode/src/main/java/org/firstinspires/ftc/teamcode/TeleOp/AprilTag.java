@@ -1,4 +1,3 @@
-/*
 package org.firstinspires.ftc.teamcode.TeleOp;
 
 import android.appwidget.AppWidgetProviderInfo;
@@ -15,8 +14,7 @@ import org.opencv.core.Mat;
 import java.util.ArrayList;
 
 
-
-public class AprilTag {
+public class AprilTagWebcam {
 
     private AprilTagProcessor aprilTagProcessor;
     private VisionPortal visionPortal;
@@ -26,20 +24,20 @@ public class AprilTag {
     public void init(HardwareMap hwMap, Telemetry telemetry){
         this.telemetry = telemetry;
 
-        aprilTagProcessor = new AprilTagProcessor.Builder()
-                .setDrawTagID(true)
-                .setDrawTagOutline(true)
-                .setDrawAxes(true)
-                .setDrawCubeProjection(true)
-                .setOutputUnits(DistanceUnit.CM, AngleUnit.Degrees)
-                .build();
+            aprilTagProcessor = new AprilTagProcessor.Builder()
+                    .setDrawTagID(true)
+                    .setDrawTagOutline(true)
+                    .setDrawAxes(true)
+                    .setDrawCubeProjection(true)
+                    .setOutputUnits(DistanceUnit.CM, AngleUnit.Degrees)
+                    .build();
 
-        VisionPortal.Builder builder = new VisionPortal.Builder();
-        builder.setCamera(hwMap.get(WebcamName.class, "Webcam"));
-        builder.setCameraResolution(new Size(640, 480));
-        builder.addProcessor(aprilTagProcessor);
+            VisionPortal.Builder builder = new VisionPortal.Builder();
+            builder.setCamera(hwMap.get(WebcamName.class, "Webcam"));
+            builder.setCameraResolution(new Size(640, 480));
+            builder.addProcessor(aprilTagProcessor);
 
-        visionPortal = builder.build();
+            visionPortal = builder.build();
     }
     public void update() {
         detectedTags = aprilTagProcessor.getDetections();
@@ -53,17 +51,16 @@ public class AprilTag {
                 return detection;
             }
             return null;
+    }
+    public void stop() {
+        if (visionPortal != null){
+            visionPortal.close();
         }
-        public void stop {
-            if (visionPortal != null){
-                visionPortal.close();
-            }
-        }
-
-
-
-
     }
 
 
- */
+
+
+}
+
+
