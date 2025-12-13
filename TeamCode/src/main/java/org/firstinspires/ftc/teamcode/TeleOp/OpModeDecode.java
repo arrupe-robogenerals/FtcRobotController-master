@@ -20,7 +20,7 @@ public class OpModeDecode extends LinearOpMode {
     public void runOpMode() {
         robot.init(hardwareMap);
 
-        final double COUNTS_PER_REV = 537.7;
+        final double COUNTS_PER_REV = 28; // changes from 537. to 28 for the 6,000 rpm motor
 
         int lastPosition = robot.launcher.getCurrentPosition();
         ElapsedTime timer = new ElapsedTime();
@@ -57,16 +57,21 @@ public class OpModeDecode extends LinearOpMode {
                  */
 
                 // rpm equation code
-                   /*
+
                     int currentPosition = robot.launcher.getCurrentPosition();
                     double deltaTime = timer.seconds();
                     double deltaCounts = currentPosition - lastPosition;
+                    double motorExvel =robot.launcher.getVelocity();// robot tell us the velocity of the launcher
+
 
 
                     double rpm = (deltaCounts / COUNTS_PER_REV) / deltaTime * 60.0;
+                    double rpmex = (motorExvel / COUNTS_PER_REV)*60 ; // coverting from ticks to rotation
 
                     telemetry.addData("Launcher RPM", rpm);
-                    */
+                    telemetry.addData("rpmEx",rpmex);// display rpmex on the drive hub
+
+
                     telemetry.addData("A_Button", gamepad1.a);
                     telemetry.addData("X_Button", gamepad1.x);
                     telemetry.addData("Y_Button", gamepad1.y);

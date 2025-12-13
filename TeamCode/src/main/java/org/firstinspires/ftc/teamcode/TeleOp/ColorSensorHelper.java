@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
-@Disabled
+//@Disabled
 // MAKE THIS FILE A PUBLIC METHOD TO CALL INTO AUTO AND TELEOP
 public class ColorSensorHelper{
 
