@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.SensorSparkFunOTOS
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
+
 @Autonomous(name="OtosBAutoTest", group="Auto")
 public class OtosBAutoTest extends LinearOpMode {
 //    SparkFunOTOS myOtos = null;
@@ -34,7 +35,7 @@ public class OtosBAutoTest extends LinearOpMode {
         telemetry.update();
 
         // Drive the robot backwards until it reaches 36 inches away from the target
-        while (pos.x > -36) {
+        while (pos.x > -1.5) { //distance is dependent on speed - current is 1 - 2
             robot.DriveForward(-0.5); // Drive backward at 50% power
             pos = robot.myOtos.getPosition(); // Update position
 
