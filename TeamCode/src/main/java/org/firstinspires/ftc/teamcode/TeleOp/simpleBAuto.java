@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-//@Disabled
+@Disabled
 @Autonomous(name="simpleBAuto", group="Auto")
 public class simpleBAuto extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();

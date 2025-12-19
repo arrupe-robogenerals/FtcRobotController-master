@@ -37,14 +37,17 @@ public class OpModeDecode extends LinearOpMode {
                     float leftTrigger;
                     float leftJoyInputY;
                     float leftJoyInputYT;
+                    float leftTrig;
 
                     leftJoyInputY = -gamepad1.left_stick_y;
                     rightJoyInputY = -gamepad1.right_stick_y;
                     rightTrigger = gamepad1.right_trigger;
                     leftTrigger = gamepad1.left_trigger;
                     leftJoyInputYT = gamepad2.left_stick_y;
+                    leftTrig = gamepad2.left_trigger;
 
                     telemetry.update();
+
 
                     boolean rightBumper = gamepad1.right_bumper;
                     boolean leftBumper = gamepad1.left_bumper;
@@ -102,7 +105,7 @@ public class OpModeDecode extends LinearOpMode {
                         robot.DriveForward(0);
                     }
 
-                    if (gamepad2.dpad_right){
+                    if (leftTrig > 0){
                         robot.intake.setPower(0.85);
                     }
                     else{
@@ -140,7 +143,6 @@ public class OpModeDecode extends LinearOpMode {
                     robot.Gate.setPosition(0.5);
                 }
 
-//                    if (gamepad2.dpad_left)
                 }//end while loop
         } //end public void
 } //end public class

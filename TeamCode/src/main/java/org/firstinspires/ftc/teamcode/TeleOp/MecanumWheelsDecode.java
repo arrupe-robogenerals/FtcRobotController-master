@@ -37,6 +37,8 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+
 
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorSparkFunOTOS;
 
@@ -74,11 +76,9 @@ public class MecanumWheelsDecode {
     public Servo Gate = null; // added in servo
     public SparkFunOTOS myOtos = null;
     public ColorSensor colorSensor = null;
-
+    public WebcamName WebCam1 = null;
 
  /*
-  public DcMotor waterWheel = null;
-  public Servo Gate = null;
  */
 
     /* Local OpMode members. */
@@ -101,6 +101,7 @@ public class MecanumWheelsDecode {
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
         intake = hwMap.get(DcMotor.class, "Intake");
         myOtos = hwMap.get(SparkFunOTOS.class, "myOtos");
+        WebCam1 = hwMap.get(WebcamName.class, "Webcam 1");
 
 
 
