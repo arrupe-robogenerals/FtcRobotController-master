@@ -14,10 +14,42 @@ public class autoScoreB extends LinearOpMode {
 
     public void runOpMode() {
 //        Object robotDrive = robot.DriveForward;
+//        int counter = 0;
 
         robot.init(hardwareMap);
 
         waitForStart();
+
+//        robot.Gate.setPosition(0.1);
+        robot.intake.setPower(0.85);
+        sleep(1000);
+        robot.intake.setPower(0);
+
+        robot.launcher.setPower(-0.62);
+
+        robot.DriveForward(-0.5);
+        sleep(700);
+
+        robot.DriveForward(0); // stop moving
+
+        for (int counter = 0; counter < 3 && opModeIsActive(); counter++) {
+
+            robot.Gate.setPosition(0.8);   // open gate
+            sleep(400);                    // servos need time
+
+            robot.Gate.setPosition(0.5);   // close gate
+            sleep(300);
+
+            telemetry.addData("counter", counter + 1);
+            telemetry.update();
+
+            idle();
+        }
+
+        robot.DriftLeft(0.30);
+        sleep(1000);
+        robot.DriftLeft(0);
+
 
 
 

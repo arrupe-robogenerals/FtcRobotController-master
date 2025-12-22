@@ -31,10 +31,14 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 //import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.hardware.sparkfun.SparkFunOTOS;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+
 
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorSparkFunOTOS;
 
@@ -67,15 +71,14 @@ public class MecanumWheelsDecode {
     public DcMotor rightDriveFront = null;
     public DcMotor leftDriveBack = null;
     public DcMotor rightDriveBack = null;
-    public DcMotor launcher = null;
+    public DcMotorEx launcher = null;
     public DcMotor intake = null;
     public Servo Gate = null; // added in servo
     public SparkFunOTOS myOtos = null;
+    public ColorSensor colorSensor = null;
+    public WebcamName WebCam1 = null;
 
  /*
-  public DcMotor waterWheel = null;
-  public ColorSensor colorSensor = null;
-  public Servo Gate = null;
  */
 
     /* Local OpMode members. */
@@ -98,12 +101,13 @@ public class MecanumWheelsDecode {
         rightDriveBack = hwMap.get(DcMotor.class, "BackRight");
         intake = hwMap.get(DcMotor.class, "Intake");
         myOtos = hwMap.get(SparkFunOTOS.class, "myOtos");
+        WebCam1 = hwMap.get(WebcamName.class, "Webcam 1");
 
 
 
-        launcher = hwMap.get(DcMotor.class, "Launcher");
+        launcher = hwMap.get(DcMotorEx.class, "Launcher");
         Gate = hwMap.get(Servo.class, "Gate Servo");
-//        colorSensor = hwMap.get(ColorSensor.class, "Color");
+        colorSensor = hwMap.get(ColorSensor.class, "colorSensor");
 
         leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
         leftDriveBack.setDirection(DcMotor.Direction.REVERSE);
