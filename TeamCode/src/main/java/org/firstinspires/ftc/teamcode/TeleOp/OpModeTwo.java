@@ -122,17 +122,18 @@ public class OpModeTwo extends LinearOpMode {
                 speed = -0.1;
             }
 
-// Button B: STEP speed down by -0.1 (each press)
+// Button B: subtract -0.1 each press
             if (gamepad2.b && !lastB && launcherOn) {
                 speed -= 0.1;
-                speed = Math.max(speed, -1.0);
+                speed = Math.max(speed, -1.0); // safety cap
             }
 
-// Apply power based on state, NOT button hold
+// Run launcher at current speed if enabled
             if (launcherOn) {
                 robot.LauncherPower(speed);
             }
-// Save previous states for edge detection
+
+// Update button memory for edge detection
             lastA = gamepad2.a;
             lastB = gamepad2.b;
 
