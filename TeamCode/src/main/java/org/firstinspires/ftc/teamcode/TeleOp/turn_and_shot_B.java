@@ -2,8 +2,10 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-//@Disabled
+
+@Disabled
 @Autonomous(name="turn_and_shot_B", group="Auto")
 public class turn_and_shot_B extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
@@ -80,7 +82,7 @@ public class turn_and_shot_B extends LinearOpMode {
 
 
 
-        /*robot.launcher.setPower(-0.62);
+        robot.launcher.setPower(-0.62);
 
         robot.DriveForward(0);
 
@@ -90,7 +92,7 @@ public class turn_and_shot_B extends LinearOpMode {
 
         robot.DriftLeft(0.30);
         sleep(1000);
-        robot.DriftLeft(0); */
+        robot.DriftLeft(0);
 
     }
 }

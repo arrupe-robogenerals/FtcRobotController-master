@@ -2,10 +2,12 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-//@Disabled
-@Autonomous(name="cycle_2_turn_shot_B", group="Auto")
-public class cycle_2_turn_shot_B extends LinearOpMode {
+
+@Disabled
+@Autonomous(name="cycle_1_turn_shot_B", group="Auto")
+public class cycle_1_turn_shot_gpp extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 
     @Override
@@ -17,13 +19,13 @@ public class cycle_2_turn_shot_B extends LinearOpMode {
 
         waitForStart();
 
-        robot.Gate.setPosition(0.1); // open the gate so then we can cycle tothe next ball
+        robot.Gate.setPosition(0.1); // open the gate so then we can cycle to the next ball
 
-        sleep(600); // wait 400 mil sec  before cycle
+        sleep(400); // wait 400 mil sec  before cycle
 
-        robot.intake.setPower(0.80); //cycle  the next ball
+        robot.intake.setPower(0.8); //cycle  the next ball
 
-        sleep(600);
+        sleep(400);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -31,7 +33,7 @@ public class cycle_2_turn_shot_B extends LinearOpMode {
 
         sleep(500);
 
-       /* robot.launcher.setPower(-0.85); // set power  of the launcher
+        robot.launcher.setPower(-0.85); // set power  of the launcher
 
         robot.TurnLeft(0.5); // turn  left
 
@@ -91,10 +93,10 @@ public class cycle_2_turn_shot_B extends LinearOpMode {
 
 
 
+// this code
 
 
-
-        /*robot.launcher.setPower(-0.62);
+        robot.launcher.setPower(-0.62);
 
         robot.DriveForward(0);
 
@@ -104,7 +106,7 @@ public class cycle_2_turn_shot_B extends LinearOpMode {
 
         robot.DriftLeft(0.30);
         sleep(1000);
-        robot.DriftLeft(0); */
+        robot.DriftLeft(0);
 
     }
 }
