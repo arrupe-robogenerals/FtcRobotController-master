@@ -38,6 +38,7 @@ public class OpModeDecode extends LinearOpMode {
                     float leftJoyInputY;
                     float leftJoyInputYT;
                     float leftTrig;
+                    float rightTrig;
 
                     leftJoyInputY = -gamepad1.left_stick_y;
                     rightJoyInputY = -gamepad1.right_stick_y;
@@ -45,6 +46,8 @@ public class OpModeDecode extends LinearOpMode {
                     leftTrigger = gamepad1.left_trigger;
                     leftJoyInputYT = gamepad2.left_stick_y;
                     leftTrig = gamepad2.left_trigger;
+                    rightTrig = gamepad2.right_trigger;
+
 
                     telemetry.update();
 
@@ -106,7 +109,7 @@ public class OpModeDecode extends LinearOpMode {
                     }
 
                     if (leftTrig > 0){
-                        robot.intake.setPower(0.85);
+                        robot.intake.setPower(0.65);
                     }
                     else{
                         robot.intake.setPower(0.0);
@@ -118,9 +121,9 @@ public class OpModeDecode extends LinearOpMode {
                     else if (gamepad2.y)
                         robot.LauncherPower(-0.9);
                     else if (gamepad2.x)
-                        robot.LauncherPower(-0.8);
+                        robot.LauncherPower(-0.88);
                     else if (gamepad2.a)
-                        robot.LauncherPower(-0.7);
+                        robot.LauncherPower(-0.86);
                     else{
                         robot.LauncherPower(0);
                     }
@@ -132,16 +135,23 @@ public class OpModeDecode extends LinearOpMode {
                         robot.Gate.setPosition(0.2);
                     }
                 */
-            // lock in position for gate
-                if (gamepad2.dpad_down){
-                    robot.Gate.setPosition(0.1);
-                }
-                else if (gamepad2.dpad_up){
-                    robot.Gate.setPosition(0.8);
-                }
-                else {
-                    robot.Gate.setPosition(0.5);
-                }
+                // lock in position for gate
+                    if (gamepad2.dpad_down){
+                        robot.Gate.setPosition(0.1);
+                    }
+                    else if (gamepad2.dpad_up){
+                        robot.Gate.setPosition(0.8);
+                    }
+                    else {
+                        robot.Gate.setPosition(0.5);
+                    }
+
+                    if(rightTrig>0){
+                        robot.intaker.setPosition(1);
+                    }
+                    else{
+                        robot.intaker.setPosition(0.0);
+                    }
 
                 }//end while loop
         } //end public void

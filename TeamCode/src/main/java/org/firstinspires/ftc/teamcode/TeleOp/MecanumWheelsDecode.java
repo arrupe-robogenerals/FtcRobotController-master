@@ -72,11 +72,12 @@ public class MecanumWheelsDecode {
     public DcMotor leftDriveBack = null;
     public DcMotor rightDriveBack = null;
     public DcMotorEx launcher = null;
-    public DcMotor intake = null;
+    public DcMotor intake = null; // controls cycle mechanism
     public Servo Gate = null; // added in servo
     public SparkFunOTOS myOtos = null;
     public ColorSensor colorSensor = null;
     public WebcamName WebCam1 = null;
+    public Servo intaker = null; // servo that intakes
 
  /*
  */
@@ -102,6 +103,8 @@ public class MecanumWheelsDecode {
         intake = hwMap.get(DcMotor.class, "Intake");
         myOtos = hwMap.get(SparkFunOTOS.class, "myOtos");
         WebCam1 = hwMap.get(WebcamName.class, "Webcam 1");
+
+        intaker = hwMap.get(Servo.class, "Intaker");
 
 
 

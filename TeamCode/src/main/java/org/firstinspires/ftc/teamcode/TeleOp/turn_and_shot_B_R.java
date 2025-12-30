@@ -5,12 +5,18 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 
+import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
+
 @Disabled
-@Autonomous(name="simple_B_Auto_Sammy_long", group="Auto")
-public class simple_B_Auto_SAMMY_long extends LinearOpMode {
+@Autonomous(name="turn_and_shot_B", group="Auto")
+public class turn_and_shot_B_R extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 
-    @Override
+//    @Override
+    boolean blue = false;
+
+
+
 
     public void runOpMode() {
 //        Object robotDrive = robot.DriveForward;
@@ -19,23 +25,22 @@ public class simple_B_Auto_SAMMY_long extends LinearOpMode {
 
         waitForStart();
 
-        robot.launcher.setPower(-0.87); // set power  of the launcher
+        robot.launcher.setPower(-0.85); // set power  of the launcher
 
-        robot.DriveForward(0.5); // drive forward for 2.7 sec
+        if (blue = true) {
+            robot.TurnLeft(0.5); // turn  left
+        } else {
+            robot.TurnRight(0.5); // turn right
+        }
 
-       sleep(2700); //
-
-       robot.DriveForward(0); // stop the robot
-
-        sleep(100);
-
-        robot.TurnLeft(0.5); // goes straight
 
         sleep(550);
 
-        robot.TurnLeft(0); // stop robots
+        robot.TurnLeft(0); // stop the robot
 
-       sleep(1200) ;  // to let speed go up of the launcher
+        robot.TurnRight(0); // stop the robot
+
+        sleep(1200);  // to let speed go up of the launcher
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
@@ -79,13 +84,19 @@ public class simple_B_Auto_SAMMY_long extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftLeft(0.30);
+        if (blue = true) {
+            robot.DriftLeft(0.30);// if its  blue then turn left
+
+
+
+        } else {
+            robot.DriftRight(0.30); // if  not blue then turn right
+
+        }
+
         sleep(2000);
+        robot.DriftRight(0);
         robot.DriftLeft(0);
-
-
-
-
 
 
 
@@ -103,6 +114,7 @@ public class simple_B_Auto_SAMMY_long extends LinearOpMode {
         robot.DriftLeft(0); */
 
     }
+
 }
 
 /*
