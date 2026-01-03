@@ -31,6 +31,7 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 //import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.hardware.sparkfun.SparkFunOTOS;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -77,7 +78,7 @@ public class MecanumWheelsDecode {
     public SparkFunOTOS myOtos = null;
     public ColorSensor colorSensor = null;
     public WebcamName WebCam1 = null;
-    public Servo intaker = null; // servo that intakes
+    public DcMotor intaker = null; // servo that intakes
 
  /*
  */
@@ -104,7 +105,7 @@ public class MecanumWheelsDecode {
         myOtos = hwMap.get(SparkFunOTOS.class, "myOtos");
         WebCam1 = hwMap.get(WebcamName.class, "Webcam 1");
 
-        intaker = hwMap.get(Servo.class, "Intaker");
+        intaker = hwMap.get(DcMotor.class, "Intaker");
 
 
 

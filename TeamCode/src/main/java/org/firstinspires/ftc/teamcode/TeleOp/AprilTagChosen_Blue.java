@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
-import static android.os.SystemClock.sleep;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -12,8 +10,8 @@ import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 
 import java.util.List;
 
-@Autonomous(name = "April Tag Chosen", group = "Auto")
-public class AprilTagChosen extends LinearOpMode {
+@Autonomous(name = "April Tag Chosen Blue Side", group = "Auto")
+public class AprilTagChosen_Blue extends LinearOpMode {
 
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
     private VisionPortal visionPortal;
@@ -152,11 +150,11 @@ public class AprilTagChosen extends LinearOpMode {
 
         robot.TurnLeft(0.5); // turn  left
 
-        sleep(630);
+        sleep(730);
 
         robot.TurnLeft(0); // stop the robot
 
-        sleep(1200);  // to let speed go up of the launcher
+        sleep(2500);  // to let speed go up of the launcher
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
@@ -210,7 +208,7 @@ public class AprilTagChosen extends LinearOpMode {
 
         robot.Gate.setPosition(0.5);
 
-        sleep(16000);
+        sleep(1600);
 
         robot.DriftLeft(0.30);
         sleep(1000);
@@ -228,7 +226,7 @@ public class AprilTagChosen extends LinearOpMode {
 
         robot.intake.setPower(0.70); //cycle  the next ball
 
-        sleep(600);
+        sleep(1000);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -240,7 +238,7 @@ public class AprilTagChosen extends LinearOpMode {
 
         robot.TurnLeft(0.5); // turn  left
 
-        sleep(630);
+        sleep(730);
 
         robot.TurnLeft(0); // stop the robot
 
@@ -287,13 +285,34 @@ public class AprilTagChosen extends LinearOpMode {
         robot.Gate.setPosition(0.5);
 
         sleep(2000);
-
+        /*
         robot.DriftLeft(0.30);
         sleep(2000);
         robot.DriftLeft(0);
-
+        */
         // TODO: Add movement code here
         sleep(2000);
+
+        // code start - turnleft to pickup artifacts
+        robot.TurnLeft(0.3);
+        sleep(800);
+        robot.TurnLeft(0.0);
+
+        robot.DriftLeft(0.2);
+        sleep(300);
+        robot.DriftLeft(0.0);
+
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
+        sleep(1000);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
+
+        // code stop    - robot movement stops with three artiifacts in the rocktumbler
+
     }
 
     private void runPGP() {
@@ -304,7 +323,7 @@ public class AprilTagChosen extends LinearOpMode {
 
         robot.TurnLeft(0.5); // turn  left
 
-        sleep(630);
+        sleep(600);
 
         robot.TurnLeft(0); // stop the robot
 
@@ -357,10 +376,7 @@ public class AprilTagChosen extends LinearOpMode {
         robot.DriftLeft(0);
         sleep(2000);
 
-        // TODO: Add movement code here
-        sleep(2000);
     }
-
     private void runDefault() {
         telemetry.addLine("NO TAG FOUND - DEFAULT AUTO PGP");
         telemetry.update();

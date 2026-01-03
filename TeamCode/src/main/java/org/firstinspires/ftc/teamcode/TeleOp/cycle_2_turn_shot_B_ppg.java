@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-@Disabled
+//@Disabled
 @Autonomous(name="cycle_2_turn_shot_B", group="Auto")
 public class cycle_2_turn_shot_B_ppg extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
@@ -26,7 +26,7 @@ public class cycle_2_turn_shot_B_ppg extends LinearOpMode {
 
         robot.intake.setPower(0.70); //cycle  the next ball
 
-        sleep(1000);
+        sleep(1500);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -34,11 +34,11 @@ public class cycle_2_turn_shot_B_ppg extends LinearOpMode {
 
         sleep(500);
 
-       robot.launcher.setPower(-0.85); // set power  of the launcher
+       robot.launcher.setPower(0.85); // set power  of the launcher
 
         robot.TurnLeft(0.5); // turn  left
 
-       sleep(550);
+       sleep(730);
 
        robot.TurnLeft(0); // stop the robot
 
@@ -79,6 +79,22 @@ public class cycle_2_turn_shot_B_ppg extends LinearOpMode {
         robot.Gate.setPosition(0.8); // pushed the 3rd ball up into the launcher
 
         sleep(2000);
+      // code start - turnleft to pickup artifacts
+        robot.TurnLeft(0.3);
+        sleep(1000);
+        robot.TurnLeft(0.0);
+
+        robot.DriveForward(0.3);
+        sleep(1000);
+        robot.intaker.setPower(1);
+        sleep(1000);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
+
+     // code stop    - robot movement stops with three artiifacts in the rocktumbler
+
 
         robot.Gate.setPosition(0.5);
         robot.Gate.setPosition(0.8);
