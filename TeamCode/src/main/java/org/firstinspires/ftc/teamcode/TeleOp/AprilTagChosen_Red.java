@@ -208,13 +208,25 @@ public class AprilTagChosen_Red extends LinearOpMode {
         telemetry.addLine("RUNNING PPG AUTO");
         telemetry.update();
 
+        robot.TurnRight(0.5); // turn  right
+
+        sleep(750);
+
+        robot.TurnRight(0); // stop the robot
         robot.Gate.setPosition(0.1); // open the gate so then we can cycle tothe next ball
 
-        sleep(600); // wait 400 mil sec  before cycle
+        sleep(700); // wait 400 mil sec  before cycle
 
-        robot.intake.setPower(0.70); //cycle  the next ball
+        robot.intake.setPower(0.66); //cycle  the next ball
 
-        sleep(1000);
+        sleep(435);
+        robot.intake.setPower(0.0);
+
+        robot.Gate.setPosition(0.5);
+
+        robot.intake.setPower(0.66);
+        sleep(435);
+        robot.intake.setPower(0.0);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -224,11 +236,6 @@ public class AprilTagChosen_Red extends LinearOpMode {
 
         robot.launcher.setPower(-0.85); // set power  of the launcher
 
-        robot.TurnRight(0.5); // turn  right
-
-        sleep(730);
-
-        robot.TurnRight(0); // stop the robot
 
         sleep(1200) ;  // to let speed go up of the launcher
 
@@ -274,13 +281,28 @@ public class AprilTagChosen_Red extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftRight(0.30);
-        sleep(2000);
-        robot.DriftRight(0);
 
+        // code start - turnleft to pickup artifacts
+        robot.TurnRight(0.3);
+        sleep(800);
+        robot.TurnRight(0.0);
+
+        robot.DriftRight(0.2);
+        sleep(300);
+        robot.DriftRight(0.0);
+
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
+        sleep(1000);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
+
+        // TODO: Add movement code here
         sleep(2000);
     }
-
     private void runPGP() {
         telemetry.addLine("RUNNING PGP AUTO");
         telemetry.update();
@@ -289,11 +311,11 @@ public class AprilTagChosen_Red extends LinearOpMode {
 
         robot.TurnRight(0.5); // turn  left
 
-        sleep(730);
+        sleep(650);
 
         robot.TurnRight(0); // stop the robot
 
-        sleep(1200) ;  // to let speed go up of the launcher
+        sleep(1300) ;  // to let speed go up of the launcher
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
@@ -342,8 +364,6 @@ public class AprilTagChosen_Red extends LinearOpMode {
         robot.DriftRight(0);
         sleep(2000);
 
-        // TODO: Add movement code here
-        sleep(2000);
     }
 
     private void runDefault() {
@@ -354,7 +374,7 @@ public class AprilTagChosen_Red extends LinearOpMode {
 
         robot.TurnRight(0.5); // turn  left
 
-        sleep(600);
+        sleep(650);
 
         robot.TurnRight(0); // stop the robot
 

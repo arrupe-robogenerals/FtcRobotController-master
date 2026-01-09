@@ -23,9 +23,9 @@ public class Cycle_Testing extends LinearOpMode {
 
         sleep(600); // wait 400 mil sec  before cycle
 
-        robot.intake.setPower(0.70); //cycle  the next ball
+        robot.intake.setPower(0.0); //cycle  the next ball
 
-        sleep(1500);
+        sleep(870);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -34,7 +34,7 @@ public class Cycle_Testing extends LinearOpMode {
         sleep(500);
 
 
-        robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
+//        robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
         sleep(2000);
 
@@ -50,7 +50,7 @@ public class Cycle_Testing extends LinearOpMode {
 
         sleep(2000); // wait before launching
 
-        robot.Gate.setPosition(0.8); // pushed the 2nd ball up into the launcher
+//        robot.Gate.setPosition(0.8); // pushed the 2nd ball up into the launcher
 
         sleep(1000);
 
@@ -73,7 +73,7 @@ public class Cycle_Testing extends LinearOpMode {
 
 
 // this cycle
-
+/*
         //pgp
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
@@ -176,6 +176,6 @@ public class Cycle_Testing extends LinearOpMode {
 
         sleep(2000);
 
-
+*/
     }
 }

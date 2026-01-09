@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
-@Disabled
+//@Disabled
 @Autonomous(name="simpleBAutoSammy", group="Auto")
 public class simpleBAuto_SAMMY extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();

@@ -2,12 +2,18 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.vision.VisionPortal;
+import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
+import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+
+import java.util.List;
 
 
 //@Disabled
-@Autonomous(name="simple_B_Auto_Sammy_long", group="Auto")
-public class simple_B_Auto_SAMMY_long extends LinearOpMode {
+@Autonomous(name="LongScore Shooting", group="Auto")
+public class LongScore extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 
     @Override
@@ -18,24 +24,17 @@ public class simple_B_Auto_SAMMY_long extends LinearOpMode {
         robot.init(hardwareMap);
 
         waitForStart();
+        sleep (15000);
 
-        robot.launcher.setPower(-0.87); // set power  of the launcher
+        robot.launcher.setPower(-.950); // set power  of the launcher
 
-        robot.DriveForward(0.5); // drive forward for 2.7 sec
+//        robot.TurnLeft(0.5); // turn  left
+//
+//        sleep(650);
+//
+//        robot.TurnLeft(0); // stop the robot
 
-       sleep(2700); //
-
-       robot.DriveForward(0); // stop the robot
-
-        sleep(100);
-
-        robot.TurnLeft(0.5); // goes straight
-
-        sleep(550);
-
-        robot.TurnLeft(0); // stop robots
-
-       sleep(1200) ;  // to let speed go up of the launcher
+        sleep(1300) ;  // to let speed go up of the launcher
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
@@ -79,28 +78,27 @@ public class simple_B_Auto_SAMMY_long extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftLeft(0.30);
-        sleep(2000);
-        robot.DriftLeft(0);
-
-
-
-
-
-
-
-
-        /*robot.launcher.setPower(-0.62);
-
-        robot.DriveForward(0);
-
-        robot.Gate.setPosition(0.5);
-
-        sleep(16000);
-
-        robot.DriftLeft(0.30);
+//        robot.DriftLeft(0.30);
+//        sleep(2000);
+//        robot.DriftLeft(0);
+//        sleep(2000);
+        robot.TurnLeft(0.3);
+        sleep(500);
+        robot.TurnLeft(0.0);
+//
+        robot.DriftLeft(-0.2);
+        sleep(500);
+        robot.DriftLeft(0.0);
+//
+        robot.intaker.setPower(1);
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
         sleep(1000);
-        robot.DriftLeft(0); */
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
 
     }
 }

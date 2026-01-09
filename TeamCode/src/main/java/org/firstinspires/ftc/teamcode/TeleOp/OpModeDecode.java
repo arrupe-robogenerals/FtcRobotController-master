@@ -124,7 +124,7 @@ public class OpModeDecode extends LinearOpMode {
                     else if (gamepad2.x)
                         robot.LauncherPower(-0.88);
                     else if (gamepad2.a)
-                        robot.LauncherPower(-0.86);
+                        robot.LauncherPower(-0.85);
                     else{
                         robot.LauncherPower(0);
                     }

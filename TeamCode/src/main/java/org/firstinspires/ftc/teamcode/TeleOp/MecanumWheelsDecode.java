@@ -76,7 +76,7 @@ public class MecanumWheelsDecode {
     public DcMotor intake = null; // controls cycle mechanism
     public Servo Gate = null; // added in servo
     public SparkFunOTOS myOtos = null;
-    public ColorSensor colorSensor = null;
+//    public ColorSensor colorSensor = null;
     public WebcamName WebCam1 = null;
     public DcMotor intaker = null; // servo that intakes
 
@@ -111,7 +111,7 @@ public class MecanumWheelsDecode {
 
         launcher = hwMap.get(DcMotorEx.class, "Launcher");
         Gate = hwMap.get(Servo.class, "Gate Servo");
-        colorSensor = hwMap.get(ColorSensor.class, "colorSensor");
+//        colorSensor = hwMap.get(ColorSensor.class, "colorSensor");
 
         leftDriveFront.setDirection(DcMotor.Direction.REVERSE);
         leftDriveBack.setDirection(DcMotor.Direction.REVERSE);

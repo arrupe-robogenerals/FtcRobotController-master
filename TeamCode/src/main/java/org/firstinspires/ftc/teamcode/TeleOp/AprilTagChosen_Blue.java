@@ -136,9 +136,9 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         sleep(400); // wait 400 mil sec  before cycle
 
-        robot.intake.setPower(0.8); //cycle  the next ball
+        robot.intake.setPower(0.7); //cycle  the next ball
 
-        sleep(400);
+        sleep(350);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -198,35 +198,60 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftLeft(0.30);
-        sleep(2000);
-        robot.DriftLeft(0);
+//        robot.DriftLeft(0.30);
+//        sleep(2000);
+//        robot.DriftLeft(0);
+//
+//        robot.launcher.setPower(-0.62);
+//
+//        robot.DriveForward(0);
+//
+//        robot.Gate.setPosition(0.5);
+//
+//        sleep(1600);
+        robot.TurnLeft(0.3);
+        sleep(800);
+        robot.TurnLeft(0.0);
 
-        robot.launcher.setPower(-0.62);
+        robot.DriftLeft(0.2);
+        sleep(300);
+        robot.DriftLeft(0.0);
 
-        robot.DriveForward(0);
-
-        robot.Gate.setPosition(0.5);
-
-        sleep(1600);
-
-        robot.DriftLeft(0.30);
+        robot.intaker.setPower(1);
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
         sleep(1000);
-        robot.DriftLeft(0);
-        sleep(2000);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
+
     }
 
     private void runPPG() {
         telemetry.addLine("RUNNING PPG AUTO");
         telemetry.update();
 
+        robot.TurnLeft(0.5); // turn  right
+
+        sleep(750);
+
+        robot.TurnLeft(0); // stop the robot
         robot.Gate.setPosition(0.1); // open the gate so then we can cycle tothe next ball
 
-        sleep(600); // wait 400 mil sec  before cycle
+        sleep(700); // wait 400 mil sec  before cycle
 
-        robot.intake.setPower(0.70); //cycle  the next ball
+        robot.intake.setPower(0.66); //cycle  the next ball
 
-        sleep(1000);
+        sleep(435);
+        robot.intake.setPower(0.0);
+
+        robot.Gate.setPosition(0.5);
+
+        robot.intake.setPower(0.66);
+        sleep(435);
+        robot.intake.setPower(0.0);
 
         robot.intake.setPower(0); // stop cycling
 
@@ -236,11 +261,6 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         robot.launcher.setPower(-0.85); // set power  of the launcher
 
-        robot.TurnLeft(0.5); // turn  left
-
-        sleep(730);
-
-        robot.TurnLeft(0); // stop the robot
 
         sleep(1200) ;  // to let speed go up of the launcher
 
@@ -285,13 +305,7 @@ public class AprilTagChosen_Blue extends LinearOpMode {
         robot.Gate.setPosition(0.5);
 
         sleep(2000);
-        /*
-        robot.DriftLeft(0.30);
-        sleep(2000);
-        robot.DriftLeft(0);
-        */
-        // TODO: Add movement code here
-        sleep(2000);
+
 
         // code start - turnleft to pickup artifacts
         robot.TurnLeft(0.3);
@@ -302,6 +316,7 @@ public class AprilTagChosen_Blue extends LinearOpMode {
         sleep(300);
         robot.DriftLeft(0.0);
 
+        robot.intaker.setPower(1);
         robot.DriveForward(0.3);
         sleep(800);
         robot.intaker.setPower(1);
@@ -323,11 +338,11 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         robot.TurnLeft(0.5); // turn  left
 
-        sleep(600);
+        sleep(650);
 
         robot.TurnLeft(0); // stop the robot
 
-        sleep(1200) ;  // to let speed go up of the launcher
+        sleep(1300) ;  // to let speed go up of the launcher
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
@@ -371,10 +386,28 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftLeft(0.30);
-        sleep(2000);
-        robot.DriftLeft(0);
-        sleep(2000);
+//        robot.DriftLeft(0.30);
+//        sleep(2000);
+//        robot.DriftLeft(0);
+//        sleep(2000);
+        robot.TurnLeft(0.3);
+        sleep(800);
+        robot.TurnLeft(0.0);
+
+        robot.DriftLeft(0.2);
+        sleep(300);
+        robot.DriftLeft(0.0);
+
+        robot.intaker.setPower(1);
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
+        sleep(1000);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
+
 
     }
     private void runDefault() {
@@ -385,7 +418,7 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         robot.TurnLeft(0.5); // turn  left
 
-        sleep(600);
+        sleep(650);
 
         robot.TurnLeft(0); // stop the robot
 
@@ -433,10 +466,28 @@ public class AprilTagChosen_Blue extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftLeft(0.30);
-        sleep(2000);
-        robot.DriftLeft(0);
-        sleep(2000);
+//        robot.DriftLeft(0.30);
+//        sleep(2000);
+//        robot.DriftLeft(0);
+//        sleep(2000);
+
+        robot.TurnLeft(0.3);
+        sleep(800);
+        robot.TurnLeft(0.0);
+
+        robot.DriftLeft(0.2);
+        sleep(300);
+        robot.DriftLeft(0.0);
+
+        robot.intaker.setPower(1);
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
+        sleep(1000);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
     }
 
 }

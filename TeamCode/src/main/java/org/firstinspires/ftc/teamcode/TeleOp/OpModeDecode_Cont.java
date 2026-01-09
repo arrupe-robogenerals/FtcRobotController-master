@@ -3,12 +3,11 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 // import com.qualcomm.robotcore.ColorSensor.colorSensor
 @TeleOp
-@Disabled
-public class OpModeDecode_Test extends LinearOpMode {
+
+public class OpModeDecode_Cont extends LinearOpMode {
 //Using
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 //    ColorSensorHelper colorHelper;
@@ -54,6 +53,8 @@ public class OpModeDecode_Test extends LinearOpMode {
 
                     boolean rightBumper = gamepad1.right_bumper;
                     boolean leftBumper = gamepad1.left_bumper;
+                    boolean intakeOn = false;
+                    boolean leftTrigpressed = false;
 
                  /*
                     boolean dpad_down = gamepad1.dpad_up; // inverted code !!Keep!!
@@ -108,51 +109,39 @@ public class OpModeDecode_Test extends LinearOpMode {
                         robot.DriveForward(0);
                     }
 
-                    if (leftTrig > 0){
-                        robot.intake.setPower(0.65);
+                    if (gamepad2.left_trigger>0){
+                        robot.intake.setPower(0.7);
                     }
                     else{
                         robot.intake.setPower(0.0);
                     }
 
-
                     if (gamepad2.b)
-                        robot.LauncherPower(-0.86);
+                        robot.LauncherPower(-0.947);
                     else if (gamepad2.y)
-                        robot.LauncherPower(-0.88);
-                    else if (gamepad2.x)
                         robot.LauncherPower(-0.9);
+                    else if (gamepad2.x)
+                        robot.LauncherPower(-0.88);
                     else if (gamepad2.a)
-                        robot.LauncherPower(-0.92);
-
-                    else if(gamepad2.dpad_down){
-                        robot.LauncherPower(-0.94);
-                    }
-                    else if(gamepad2.dpad_up){
-                        robot.LauncherPower(-0.96);
-                    }
-                    else if(gamepad2.dpad_left){
-                        robot.LauncherPower(-0.98);
-                    }
-                    else if(gamepad2.dpad_right){
-                        robot.LauncherPower(-1);
-                    }
+                        robot.LauncherPower(-0.85);
                     else{
-                        robot.LauncherPower(0);
+                        robot.LauncherPower(-0.85);
                     }
 
-                    if (gamepad1.dpad_down){
+
+                // lock in position for gate
+                    if (gamepad2.dpad_down){
                         robot.Gate.setPosition(0.1);
                     }
-                    else if (gamepad1.dpad_up){
+                    else if (gamepad2.dpad_up){
                         robot.Gate.setPosition(0.8);
                     }
                     else {
                         robot.Gate.setPosition(0.5);
                     }
 
-                    if(rightTrig>0){
-                        robot.intaker.setPower(-1);
+                    if(rightTrig>0.2){
+                        robot.intaker.setPower(1.0);
                     }
                     else{
                         robot.intaker.setPower(0.0);
@@ -203,3 +192,18 @@ robot.LauncherPower(0);
 robot.DriveForward(0);
 robot.Gate.setPosition(0);
                     }*/
+
+ /*if (gamepad2.left_stick_button){
+                        robot.LauncherPower(0.9);
+                    }
+                    else {
+                        robot.LauncherPower(0.0);
+                    }*/
+                /*
+                    if (gamepad2.dpad_down){
+                        robot.Gate.setPosition(0.5);
+                    }
+                    else {
+                        robot.Gate.setPosition(0.2);
+                    }
+                */
