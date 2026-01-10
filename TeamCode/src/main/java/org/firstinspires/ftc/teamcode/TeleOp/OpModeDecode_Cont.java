@@ -1,14 +1,13 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
 
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 // import com.qualcomm.robotcore.ColorSensor.colorSensor
 @TeleOp
 
-public class OpModeDecode extends LinearOpMode {
+public class OpModeDecode_Cont extends LinearOpMode {
 //Using
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 //    ColorSensorHelper colorHelper;
@@ -126,7 +125,7 @@ public class OpModeDecode extends LinearOpMode {
                     else if (gamepad2.a)
                         robot.LauncherPower(-0.85);
                     else{
-                        robot.LauncherPower(0);
+                        robot.LauncherPower(-0.85);
                     }
 
 

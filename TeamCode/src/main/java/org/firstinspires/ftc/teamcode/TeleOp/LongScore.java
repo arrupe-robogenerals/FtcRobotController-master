@@ -2,12 +2,18 @@ package org.firstinspires.ftc.teamcode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.vision.VisionPortal;
+import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
+import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
+
+import java.util.List;
 
 
-@Disabled
-@Autonomous(name="cycle_1_turn_shot_B", group="Auto")
-public class cycle_1_turn_shot_gpp extends LinearOpMode {
+//@Disabled
+@Autonomous(name="LongScore Shooting", group="Auto")
+public class LongScore extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
 
     @Override
@@ -18,30 +24,17 @@ public class cycle_1_turn_shot_gpp extends LinearOpMode {
         robot.init(hardwareMap);
 
         waitForStart();
+        sleep (15000);
 
-        robot.Gate.setPosition(0.1); // open the gate so then we can cycle to the next ball
+        robot.launcher.setPower(-.950); // set power  of the launcher
 
-        sleep(400); // wait 400 mil sec  before cycle
+//        robot.TurnLeft(0.5); // turn  left
+//
+//        sleep(650);
+//
+//        robot.TurnLeft(0); // stop the robot
 
-        robot.intake.setPower(0.8); //cycle  the next ball
-
-        sleep(400);
-
-        robot.intake.setPower(0); // stop cycling
-
-        robot.Gate.setPosition(0.5); //  reset gate
-
-        sleep(500);
-
-        robot.launcher.setPower(-0.85); // set power  of the launcher
-
-        robot.TurnLeft(0.5); // turn  left
-
-       sleep(550);
-
-       robot.TurnLeft(0); // stop the robot
-
-       sleep(1200) ;  // to let speed go up of the launcher
+        sleep(1300) ;  // to let speed go up of the launcher
 
         robot.Gate.setPosition(0.8); // pushed the 1st ball  up into the launcher
 
@@ -85,28 +78,27 @@ public class cycle_1_turn_shot_gpp extends LinearOpMode {
 
         sleep(2000);
 
-        robot.DriftLeft(0.30);
-        sleep(2000);
-        robot.DriftLeft(0);
-
-
-
-
-
-// this code
-
-
-        robot.launcher.setPower(-0.62);
-
-        robot.DriveForward(0);
-
-        robot.Gate.setPosition(0.5);
-
-        sleep(16000);
-
-        robot.DriftLeft(0.30);
+//        robot.DriftLeft(0.30);
+//        sleep(2000);
+//        robot.DriftLeft(0);
+//        sleep(2000);
+        robot.TurnLeft(0.3);
+        sleep(500);
+        robot.TurnLeft(0.0);
+//
+        robot.DriftLeft(-0.2);
+        sleep(500);
+        robot.DriftLeft(0.0);
+//
+        robot.intaker.setPower(1);
+        robot.DriveForward(0.3);
+        sleep(800);
+        robot.intaker.setPower(1);
         sleep(1000);
-        robot.DriftLeft(0);
+        robot.DriveForward(0);
+        sleep(300);
+        robot.intake.setPower(0.85); //cycle  the next ball
+        sleep(520);
 
     }
 }

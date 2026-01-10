@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 
-@Disabled
+//@Disabled
 @Autonomous(name="simple_B_Auto_Sammy_long", group="Auto")
 public class simple_B_Auto_SAMMY_long extends LinearOpMode {
     MecanumWheelsDecode robot = new MecanumWheelsDecode();
